@@ -32,6 +32,10 @@ For serving the batch layer we will use [Splout SQL](http://sploutsql.com) which
 We will also use [Trident](https://github.com/nathanmarz/storm/wiki/Trident-tutorial) to implement the remote service using its DRPC capabilities. [Trident](https://github.com/nathanmarz/storm/wiki/Trident-tutorial) iself will query both the batch layer and the
 real-time layer and merge the results.
 
+This is how, conceptually, the overall architecture looks like:
+
+![alt text](https://github.com/pereferrera/trident-lambda-splout/TridentSploutArch.png "Trident-Lambda-Splout Hashtag Counts Architecture")
+
 How to try it
 =============
 
