@@ -22,19 +22,19 @@ public class SploutState extends ReadOnlyState {
 	// Because QueryFunction doesn't allow us to propagate explicit Exceptions upstream, we have to decide:
 	// either we set "null" on a failure in the result or we throw a non-catched Exception upstream.
 	private boolean failFast;
-	
+
 	@SuppressWarnings("serial")
-  public static class Factory implements StateFactory {
+	public static class Factory implements StateFactory {
 
 		String[] qNodes;
 		boolean failFast;
-		
+
 		public Factory(boolean failFast, String... qNodes) {
 			this.qNodes = qNodes;
 		}
 
 		@SuppressWarnings("rawtypes")
-    @Override
+		@Override
 		public State makeState(Map conf, int partitionIndex, int numPartitions) {
 			return new SploutState(failFast, qNodes);
 		}
@@ -44,11 +44,11 @@ public class SploutState extends ReadOnlyState {
 		this.sploutClient = new SploutClient(qNodes);
 		this.failFast = failFast;
 	}
-	
+
 	/**
-	 * Given a SQL query and a partition key, query Splout. We take advantage of Trident's batch and perform several queries 
-	 * in a row. This could actually be a lot more efficient if we used a thread-pool here since Splout can handle parallel
-	 * queries quite well, but I kept it simple just for the sake of this example.
+	 * Given a SQL query and a partition key, query Splout. We take advantage of Trident's batch and perform several
+	 * queries in a row. This could actually be a lot more efficient if we used a thread-pool here since Splout can handle
+	 * parallel queries quite well, but I kept it simple just for the sake of this example.
 	 */
 	public List<Object> querySplout(String tablespace, List<String> sql, List<String> keys) {
 		List<Object> result = new ArrayList<Object>();
@@ -56,14 +56,14 @@ public class SploutState extends ReadOnlyState {
 			String partitionKey = keys.get(i);
 			String sqlQuery = sql.get(i);
 			try {
-	      result.add(sploutClient.query(tablespace, partitionKey, sqlQuery, null));
-      } catch(IOException e) {
-      	if(!failFast) {
-	      	result.add(null);
-      	} else {
-      		throw new RuntimeException(e);
-      	}
-      }
+				result.add(sploutClient.query(tablespace, partitionKey, sqlQuery, null));
+			} catch(IOException e) {
+				if(!failFast) {
+					result.add(null);
+				} else {
+					throw new RuntimeException(e);
+				}
+			}
 		}
 		return result;
 	}
