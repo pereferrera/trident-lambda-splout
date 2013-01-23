@@ -38,11 +38,11 @@ How to try it
 1) Hadoop
 
 Hadoop is a key component of this "lambda architecture" example so you must have it installed and its services
-must be running. $HADOOP_HOME needs to be defined for [Splout SQL](http://sploutsql.com).
+must be running. $HADOOP_HOME needs to be defined for Splout SQL.
 
 2) Batch layer
 
-For trying out this example you must first download [Splout SQL](http://sploutsql.com) an execute a one-node cluster locally.
+For trying out this example you must first download Splout SQL an execute a one-node cluster locally.
 You can download a distribution from Maven Central: http://search.maven.org/#browse%7C-1223220252
 After uncompressing it:
 
@@ -89,8 +89,8 @@ You should see something like this:
 	Result for hashtag 'california' -> [[{"20091022":115,"20091023":115,"20091024":158,"20091025":19,"20130123":286}]]
 	...
 	
-The first four dates come from the batch layer ([Splout SQL](http://sploutsql.com)) whereas the last date (whose count is being incremented in real-time) comes from the real-time layer.
-The merging has been done with [Trident](https://github.com/nathanmarz/storm/wiki/Trident-tutorial) at the DRPC service.
+The first four dates come from the batch layer Splout SQL whereas the last date (whose count is being incremented in real-time) comes from the real-time layer.
+The merging has been done with Trident at the DRPC service.
 
 Conclusions
 ===========
