@@ -34,7 +34,7 @@ real-time layer and merge the results.
 
 This is how, conceptually, the overall architecture looks like:
 
-![alt text](https://github.com/pereferrera/trident-lambda-splout/TridentSploutArch.png "Trident-Lambda-Splout Hashtag Counts Architecture")
+![alt text](https://raw.github.com/pereferrera/trident-lambda-splout/master/TridentSploutArch.png "Trident-Lambda-Splout Hashtag Counts Architecture")
 
 How to try it
 =============
