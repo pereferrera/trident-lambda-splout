@@ -7,7 +7,7 @@ as real-time layer and [Splout SQL](http://sploutsql.com) as batch layer.
 The problem
 ===========
 
-We want to implement counting the number of appearances of hashtags in tweets, grouped by by date, and serve the data as a remote service,
+We want to implement counting the number of appearances of hashtags in tweets, grouped by date, and serve the data as a remote service,
  for example to be able to populate timelines in a website / mobile app (e.g. give me the evolution of mentions for hashtag "california" for
  the past 10 days).
 
@@ -26,7 +26,7 @@ The solution proposed is to use a "lambda architecture" and implement a real-tim
 building real-time topologies and saving persistent state derived from them. 
 
 For serving the batch layer we will use [Splout SQL](http://sploutsql.com) which is a high-performant SQL read-only data store that can pull and serve datasets
- from Hadoop very efficiently. Splout is fast like ElephantDB but it also allows us to execute SQL queries. Using SQL for serving the batch
+ from Hadoop very efficiently. Splout is fast like [ElephantDB](https://github.com/nathanmarz/elephantdb) but it also allows us to execute SQL queries. Using SQL for serving the batch
  layer is convenient as we might want to break-down the counts by hour, day, week, or any arbitrary date period.  
  
 We will also use [Trident](https://github.com/nathanmarz/storm/wiki/Trident-tutorial) to implement the remote service using its DRPC capabilities. [Trident](https://github.com/nathanmarz/storm/wiki/Trident-tutorial) iself will query both the batch layer and the
@@ -107,7 +107,7 @@ For this example to be complete we have to clarify some things:
 
 - We didn't implement actually crawling the Tweets, parsing them and feeding them into Storm. 
 You would usually do that through a messaging / queue system such as Kestrel (see https://github.com/nathanmarz/storm-kestrel). 
-Creating a scalable fetcher for Twitter is too complex and out of scope for this example.
+Creating a scalable fetcher for Twitter that also outputs the Tweets to Hadoop's HDFS is too complex and out of scope for this example.
 
 - We used a dataset of hourly counts that was already calculated by Hadoop but we didn't show how to do that. 
 This part is quite straight-foward and you will find plenty of examples in the web on how to perform simple aggregation tasks 

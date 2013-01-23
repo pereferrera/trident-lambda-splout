@@ -76,7 +76,7 @@ public class LambdaHashTagsTopology {
 				if(val2.containsKey(entry.getKey())) {
 					continue;
 				}
-				val2.put(entry.getKey(), MapUtils.getLong(val2, entry.getKey(), 0L) + entry.getValue());
+				val2.put(entry.getKey(), entry.getValue());
 			}
 			return val2;
 		}
