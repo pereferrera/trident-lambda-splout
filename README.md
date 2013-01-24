@@ -34,7 +34,7 @@ real-time layer and merge the results.
 
 This is how, conceptually, the overall architecture looks like:
 
-![alt text](https://raw.github.com/pereferrera/trident-lambda-splout/master/TridentSploutArch.png "Trident-Lambda-Splout Hashtag Counts Architecture")
+![alt text](https://raw.github.com/pereferrera/trident-lambda-splout/master/TridentSploutArch-medium.png "Trident-Lambda-Splout Hashtag Counts Architecture")
 
 How to try it
 =============
@@ -47,7 +47,7 @@ must be running. $HADOOP_HOME needs to be defined for Splout SQL.
 2) Batch layer
 
 For trying out this example you must first download Splout SQL an execute a one-node cluster locally.
-You can download a distribution from Maven Central: http://search.maven.org/#browse%7C-1223220252
+You can download a distribution (.tar.gz file) from Maven Central: http://search.maven.org/#browse%7C-1223220252
 After uncompressing it:
 
 	bin/splout-service.sh qnode start
