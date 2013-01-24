@@ -62,7 +62,7 @@ Let's call $TRIDENT_LAMBDA_SPLOUT_HOME the path where you have cloned this repo,
 from $SPLOUT_HOME (the path where you uncompressed Splout) you just execute:
 
 	hadoop fs -put $TRIDENT_LAMBDA_SPLOUT_HOME/sample-hashtags sample-hashtags
-	hadoop jar splout-hadoop-*-hadoop.jar simple-generate -i sample-hashtags -o out-hashtags -pby hashtag -p 2 -s "label:string,date:string,count:int,hashtag:string" -t hashtags -tb hashtags
+	hadoop jar splout-hadoop-*-hadoop.jar simple-generate -i sample-hashtags -o out-hashtags -pby hashtag -p 2 -s "label:string,date:string,count:int,hashtag:string" --index "hashtag,date" -t hashtags -tb hashtags
 	hadoop jar splout-hadoop-*-hadoop.jar deploy -q http://localhost:4412 -root out-hashtags -ts hashtags
 	
 After these three statements you will have the data indexed, partitioned and loaded into [Splout SQL](http://sploutsql.com). 
