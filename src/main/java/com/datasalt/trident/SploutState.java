@@ -8,6 +8,7 @@ import java.util.Map;
 import storm.trident.state.ReadOnlyState;
 import storm.trident.state.State;
 import storm.trident.state.StateFactory;
+import backtype.storm.task.IMetricsContext;
 
 import com.splout.db.common.SploutClient;
 
@@ -34,10 +35,10 @@ public class SploutState extends ReadOnlyState {
 		}
 
 		@SuppressWarnings("rawtypes")
-		@Override
-		public State makeState(Map conf, int partitionIndex, int numPartitions) {
+    @Override
+    public State makeState(Map conf, IMetricsContext metrics, int partitionIndex, int numPartitions) {
 			return new SploutState(failFast, qNodes);
-		}
+    }
 	}
 
 	public SploutState(boolean failFast, String... qNodes) {
